@@ -28,12 +28,14 @@ namespace DarwoftBack1.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Name=DarwoftMarketDB");
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-CELVFUPK\\SQLEXPRESS;Initial Catalog=DarwoftMarket;Integrated Security=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Boss>(entity =>
             {
                 entity.Property(e => e.Id)
